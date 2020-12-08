@@ -3,16 +3,17 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Child = (props) => {
     console.log(props);
-       return (
+    const {value, increase, decrease} = props;
+    return (
         <div className="row">     
             <div className="col-md-1">
-                <button onClick={props.increase}>Increment</button>
+                <button onClick={increase}>Increment</button>
             </div>
             <div className="col-md-1">
-                <span>{props.value}</span>
+                <span>{value}</span>
             </div>
             <div className="col-md-1">
-                <button onClick={props.decrease}>Decrement</button>
+                <button onClick={decrease}>Decrement</button>
             </div>
         </div>    
        );
