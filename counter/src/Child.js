@@ -1,19 +1,19 @@
 import React from "react";
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 const Child = (props) => {
     console.log(props);
-    const {value, increase, decrease} = props;
+    const {value, onIncrement, onDecrement} = props;
     return (
         <div className="row">     
             <div className="col-md-1">
-                <button onClick={increase}>Increment</button>
+                <button onClick={onIncrement}>Increment</button>  
             </div>
             <div className="col-md-1">
                 <span>{value}</span>
             </div>
             <div className="col-md-1">
-                <button onClick={decrease}>Decrement</button>
+                <button onClick={onDecrement}>Decrement</button>
             </div>
         </div>    
        );

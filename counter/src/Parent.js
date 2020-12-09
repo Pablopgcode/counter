@@ -1,10 +1,7 @@
 import React from "react";
-import ReactDOM from 'react-dom';
 import Child from './Child';
-import { createStore } from 'redux'
-import reducer from './reducers/reducer'
-import store from '../src/store/store'
-import {increment, decrement} from './actions/action'
+import {increment, decrement, incrementNValues} from './actions/action'
+import { connect } from 'react-redux';
 
 
 // class Parent extends React.Component {
@@ -39,14 +36,43 @@ import {increment, decrement} from './actions/action'
 
 // export default Parent;
 
-const Parent = (props) => {
+
+const Parent = (props) => {   //props.value
+                              //props.increment
+                              //props.decrement
+
+    const increment = () => {      
+        props.incrementNValues(4);
+    }
+    
+    const decrement = () => {
+        props.decrement();
+    }
+    
     return(
-        <Child {...props} />
-    );
+      <Child value={props.value} onIncrement={increment} onDecrement={decrement} />
+    )    
+    
+}   
+
+function mapStateToProps(state) {  //subscripción al estado global
+  return {
+    value: state.value
+  };
 }
+  
+const mapDispatchToProps = {  //acciones que el componenete puede realizar
+    increment,
+    decrement,
+    incrementNValues
+};
 
 
-export default Parent;
+export default connect(mapStateToProps, mapDispatchToProps)(Parent);
+
+
+
+
 
 
 
